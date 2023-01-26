@@ -1,20 +1,13 @@
-FROM messense/rust-musl-cross:x86_64-musl as builder
-
-WORKDIR /root
-
-RUN git clone https://github.com/pchpub/BiliRoaming-Rust-Server.git &&\
-    cd /root/BiliRoaming-Rust-Server &&\
-    cargo build
-
-FROM alpine:latest
+FROM debian:latest
 
 WORKDIR /app
 
-COPY --from=builder /root/biliroaming_rust_server/target/release/biliroaming_rust_server /usr/local/bin
-COPY config.json /usr/local/bin
 COPY . .
 
-RUN apk update &&\
-    apk add caddy 
+RUN apt update &&\
+    apt install nginx &&\
+    wget https://github.com/pchpub/BiliRoaming-Rust-Server/releases/download/v0.3.2/biliroaming_rust_server &&\
+    mv biliroaming_rust_server /usr/bin/local &&\
+    mv config.json /usr/bin/local
 
 ENTRYPOINT ["./entrypoint.sh"]
