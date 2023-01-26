@@ -1,6 +1,6 @@
 #!/bin/bash
 
-./usr/local/bin/server/biliroaming_rust_server &
+/app/biliroaming_rust_server &
 
 cp /app/nginx.conf /etc/nginx/conf.d/server.conf 
 
