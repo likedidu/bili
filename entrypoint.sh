@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 biliroaming_rust_server &
 
