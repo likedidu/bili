@@ -10,4 +10,4 @@ RUN apt update &&\
     mv biliroaming_rust_server /usr/bin/local &&\
     mv config.json /usr/bin/local
 
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["./app/entrypoint.sh"]
